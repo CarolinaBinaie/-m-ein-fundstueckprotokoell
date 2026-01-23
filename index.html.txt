@@ -91,8 +91,6 @@ body {
   <img src="img3_hover.jpg" class="hover" alt="">
 </a>
 
-<!-- beliebig fortsetzen -->
-</div>
 
 <!-- ===== LIGHTBOX-INHALT ===== -->
 
@@ -110,3 +108,4 @@ body {
 
 </body>
 </html>
+
