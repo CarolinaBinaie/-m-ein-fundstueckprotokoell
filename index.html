@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Below the Surface</title>
+
+<style>
+
+/\* ===== GRUNDSTIL ===== \*/
+
+body {
+
+&nbsp; margin: 40px;
+
+&nbsp; font-family: Arial, sans-serif;
+
+&nbsp; background: white;
+
+}
+
+
+
+/\* ===== RASTER ===== \*/
+
+.grid {
+
+&nbsp; display: grid;
+
+&nbsp; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+&nbsp; gap: 25px;
+
+}
+
+
+
+/\* ===== BILD-FELD ===== \*/
+
+.item {
+
+&nbsp; position: relative;
+
+&nbsp; cursor: pointer;
+
+}
+
+
+
+/\* Beide Bilder \*/
+
+.item img {
+
+&nbsp; width: 100%;
+
+&nbsp; display: block;
+
+}
+
+
+
+/\* Hover-Bild \*/
+
+.item .hover {
+
+&nbsp; position: absolute;
+
+&nbsp; inset: 0;
+
+&nbsp; opacity: 0;
+
+&nbsp; transition: opacity 0.25s ease;
+
+}
+
+
+
+/\* Hover-Effekt \*/
+
+.item:hover .hover {
+
+&nbsp; opacity: 1;
+
+}
+
+
+
+/\* ===== LIGHTBOX ===== \*/
+
+.lightbox {
+
+&nbsp; position: fixed;
+
+&nbsp; inset: 0;
+
+&nbsp; background: rgba(255,255,255,0.95);
+
+&nbsp; display: none;
+
+&nbsp; align-items: center;
+
+&nbsp; justify-content: center;
+
+&nbsp; z-index: 1000;
+
+}
+
+
+
+.lightbox img {
+
+&nbsp; max-width: 90%;
+
+&nbsp; max-height: 90%;
+
+}
+
+
+
+/\* Klick aktiviert Lightbox \*/
+
+.lightbox:target {
+
+&nbsp; display: flex;
+
+}
+
+</head>
+
+<body>
+
+<h1>BELOW THE SURFACE</h1>
+
+<div class="grid">
+
+<!-- BILD 1 -->
+<a href="#img1" class="item">
+  <img src="img1.jpg" alt="">
+  <img src="img1\_hover.jpg" class="hover" alt="">
+</a>
+
+<!-- BILD 2 -->
+<a href="#img2" class="item">
+  <img src="img2.jpg" alt="">
+  <img src="img2\_hover.jpg" class="hover" alt="">
+</a>
+
+<!-- BILD 3 -->
+<a href="#img3" class="item">
+  <img src="img3.jpg" alt="">
+  <img src="img3\_hover.jpg" class="hover" alt="">
+</a>
+
+
+<!-- ===== LIGHTBOX-INHALT ===== -->
+
+<div id="img1" class="lightbox">
+  <a href="#"><img src="img1.jpg"></a>
+</div>
+
+<div id="img2" class="lightbox">
+  <a href="#"><img src="img2.jpg"></a>
+</div>
+
+<div id="img3" class="lightbox">
+  <a href="#"><img src="img3.jpg"></a>
+</div>
+
+</body>
+</html>
