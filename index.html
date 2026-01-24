@@ -1,172 +1,87 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>(m)ein Fundstueckprotokoll</title>
-
-<style>
-
-/\* ===== GRUNDSTIL ===== \*/
-
-body {<h1>Meine Seite funktioniert 🎉</h1>
-
-
-&nbsp; margin: 40px;
-
-&nbsp; font-family: Arial, sans-serif;
-
-&nbsp; background: white;
-
-}
-
-
-
-/\* ===== RASTER ===== \*/
-
-.grid {
-
-&nbsp; display: grid;
-
-&nbsp; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-
-&nbsp; gap: 25px;
-
-}
-
-
-
-/\* ===== BILD-FELD ===== \*/
-
-.item {
-
-&nbsp; position: relative;
-
-&nbsp; cursor: pointer;
-
-}
-
-
-
-/\* Beide Bilder \*/
-
-.item img {
-
-&nbsp; width: 100%;
-
-&nbsp; display: block;
-
-}
-
-
-
-/\* Hover-Bild \*/
-
-.item .hover {
-
-&nbsp; position: absolute;
-
-&nbsp; inset: 0;
-
-&nbsp; opacity: 0;
-
-&nbsp; transition: opacity 0.25s ease;
-
-}
-
-
-
-/\* Hover-Effekt \*/
-
-.item:hover .hover {
-
-&nbsp; opacity: 1;
-
-}
-
-
-
-/\* ===== LIGHTBOX ===== \*/
-
-.lightbox {
-
-&nbsp; position: fixed;
-
-&nbsp; inset: 0;
-
-&nbsp; background: rgba(255,255,255,0.95);
-
-&nbsp; display: none;
-
-&nbsp; align-items: center;
-
-&nbsp; justify-content: center;
-
-&nbsp; z-index: 1000;
-
-}
-
-
-
-.lightbox img {
-
-&nbsp; max-width: 90%;
-
-&nbsp; max-height: 90%;
-
-}
-
-
-
-/\* Klick aktiviert Lightbox \*/
-
-.lightbox:target {
-
-&nbsp; display: flex;
-
-}
-
+  <meta charset="UTF-8">
+  <title>Meine Bilder</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      margin: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .bild {
+      cursor: pointer;
+    }
+
+    .bild img {
+      width: 100%;
+      transition: transform 0.3s;
+    }
+
+    .bild img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Popup */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .overlay img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .overlay.active {
+      display: flex;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>BELOW THE SURFACE</h1>
+<h1>Meine Bildergalerie</h1>
 
 <div class="grid">
+  <div class="bild" onclick="openImg('bilder/bild1.jpg')">
+    <img src="bilder/bild1.jpg">
+  </div>
 
-<!-- BILD 1 -->
-<a href="#img1" class="item">
-  <img src="img1.jpg" alt="">
-  <img src="img1\_hover.jpg" class="hover" alt="">
-</a>
+  <div class="bild" onclick="openImg('bilder/bild2.jpg')">
+    <img src="bilder/bild2.jpg">
+  </div>
 
-<!-- BILD 2 -->
-<a href="#img2" class="item">
-  <img src="img2.jpg" alt="">
-  <img src="img2\_hover.jpg" class="hover" alt="">
-</a>
-
-<!-- BILD 3 -->
-<a href="#img3" class="item">
-  <img src="img3.jpg" alt="">
-  <img src="img3\_hover.jpg" class="hover" alt="">
-</a>
-
-
-<!-- ===== LIGHTBOX-INHALT ===== -->
-
-<div id="img1" class="lightbox">
-  <a href="#"><img src="img1.jpg"></a>
+  <div class="bild" onclick="openImg('bilder/bild3.jpg')">
+    <img src="bilder/bild3.jpg">
+  </div>
 </div>
 
-<div id="img2" class="lightbox">
-  <a href="#"><img src="img2.jpg"></a>
+<div class="overlay" id="overlay" onclick="closeImg()">
+  <img id="gross">
 </div>
 
-<div id="img3" class="lightbox">
-  <a href="#"><img src="img3.jpg"></a>
-</div>
+<script>
+  function openImg(src) {
+    document.getElementById("gross").src = src;
+    document.getElementById("overlay").classList.add("active");
+  }
+
+  function closeImg() {
+    document.getElementById("overlay").classList.remove("active");
+  }
+</script>
 
 </body>
-
 </html>
-
