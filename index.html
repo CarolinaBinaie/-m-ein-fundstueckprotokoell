@@ -125,6 +125,25 @@
   font-size: 14px;
   line-height: 1.6;
 }
+	  
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .bottom {
+    flex-direction: column;
+  }
+  .bottom img,
+  .textbox {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   </style>
 </head>
@@ -316,6 +335,7 @@
 
 </body>
 </html>
+
 
 
 
