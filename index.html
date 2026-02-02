@@ -130,7 +130,12 @@ h1 {
 
 <!-- ===== BILDER 1–50 ===== -->
 
-<div class="item" onclick="openLightbox('bilder/img1.jpg','bilder/img1_hover.jpg')"><img src="bilder/img1.jpg"><img src="bilder/img1_hover.jpg" class="hover"></div>
+<div class="item"
+     onclick="openLightbox('bilder/img1.jpg','bilder/img1_hover.jpg')">
+  <img src="bilder/img1.jpg">
+  <img src="bilder/img1_hover.jpg" class="hover">
+</div>
+
 <div class="item" onclick="openLightbox('bilder/img2.jpg')"><img src="bilder/img2.jpg"><img src="bilder/img2_hover.jpg" class="hover"></div>
 <div class="item" onclick="openLightbox('bilder/img3.jpg')"><img src="bilder/img3.jpg"><img src="bilder/img3_hover.jpg" class="hover"></div>
 <div class="item" onclick="openLightbox('bilder/img4.jpg')"><img src="bilder/img4.jpg"><img src="bilder/img4_hover.jpg" class="hover"></div>
@@ -256,6 +261,45 @@ h1 {
 <!-- ===== LIGHTBOX ===== -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <img id="lightbox-img">
+	#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#lightbox.active {
+  display: flex;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 60px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+.arrow.left { left: 30px; }
+.arrow.right { right: 30px; }
 </div>
 
 <!-- ===== UNTERER BEREICH ===== -->
@@ -296,7 +340,16 @@ document.getElementById("lightbox").addEventListener("click", function(e){
 
 
 </body>
+	<div id="lightbox">
+  <span class="close" onclick="closeLightbox()">×</span>
+
+  <span class="arrow left" onclick="prevImage()">‹</span>
+  <img id="lightbox-img">
+  <span class="arrow right" onclick="nextImage()">›</span>
+</div>
+
 </html>
+
 
 
 
