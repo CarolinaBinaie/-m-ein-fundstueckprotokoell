@@ -316,14 +316,15 @@ h1 {
   </div>
 </div>
 
+	
 <script>
-let currentPair = [];
-let currentIndex = 0;
+let images = [];
+let current = 0;
 
-function openLightboxPair(img1, img2) {
-  currentPair = [img1, img2];
-  currentIndex = 0;
-  document.getElementById("lightbox-img").src = currentPair[currentIndex];
+function openLightbox(img1, img2) {
+  images = [img1, img2];
+  current = 0; // immer Bild 1 zuerst
+  document.getElementById("lightbox-img").src = images[current];
   document.getElementById("lightbox").classList.add("active");
 }
 
@@ -331,11 +332,15 @@ function closeLightbox() {
   document.getElementById("lightbox").classList.remove("active");
 }
 
-document.getElementById("lightbox").addEventListener("click", function(e){
-  e.stopPropagation();
-  currentIndex = (currentIndex + 1) % currentPair.length;
-  document.getElementById("lightbox-img").src = currentPair[currentIndex];
-});
+function nextImage() {
+  current = (current + 1) % images.length;
+  document.getElementById("lightbox-img").src = images[current];
+}
+
+function prevImage() {
+  current = (current - 1 + images.length) % images.length;
+  document.getElementById("lightbox-img").src = images[current);
+}
 </script>
 
 
@@ -349,6 +354,7 @@ document.getElementById("lightbox").addEventListener("click", function(e){
 </div>
 
 </html>
+
 
 
 
