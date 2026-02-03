@@ -6,7 +6,7 @@
 
   <style>
     /* RESET */
-    * body {
+    body {
       margin: 0;
       padding: 40px;
       background: black;
@@ -17,7 +17,7 @@
     /* TITEL */
     header {
       padding: 40px 20px;
-      text-align: relative;
+      text-align: left;
 	  margin-bottom: 60px;
     }
 
@@ -36,7 +36,8 @@
     .grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  column-gap: 10px; /* horizontal */
+  row-gap: 20px;    /* vertikal */
 }
 
     .item {
@@ -46,6 +47,8 @@
 
     .item img {
       width: 100%;
+	  height: auto;
+      object-fit: contain;
       display: block;
       transition: opacity 0.3s ease;
     }
@@ -332,6 +335,7 @@
 
 </body>
 </html>
+
 
 
 
